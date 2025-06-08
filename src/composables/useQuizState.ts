@@ -1,11 +1,11 @@
-import { ref, computed, readonly } from 'vue'
+import { ref, computed, readonly, type Ref, type ComputedRef } from 'vue'
 import type { QuizState, QuizStatus, Scores, CareerCategory } from '../types/quiz'
 
 interface UseQuizStateReturn {
-  currentQuestionIndex: Readonly<typeof currentQuestionIndex>
-  answers: Readonly<typeof answers>
-  scores: Readonly<typeof scores>
-  status: Readonly<typeof status>
+  currentQuestionIndex: Readonly<Ref<number>>
+  answers: Readonly<Ref<number[]>>
+  scores: Readonly<Ref<Scores>>
+  status: Readonly<ComputedRef<QuizStatus>>
   selectAnswer: (questionIndex: number, optionIndex: number, optionScores: Partial<Scores>) => void
   nextQuestion: () => void
   previousQuestion: () => void
@@ -88,10 +88,10 @@ export function useQuizState(): UseQuizStateReturn {
   }
 
   return {
-    currentQuestionIndex: readonly(currentQuestionIndex),
-    answers: readonly(answers),
-    scores: readonly(scores),
-    status: readonly(status),
+    currentQuestionIndex: readonly(currentQuestionIndex) as Readonly<Ref<number>>,
+    answers: readonly(answers) as Readonly<Ref<number[]>>,
+    scores: readonly(scores) as Readonly<Ref<Scores>>,
+    status: status as Readonly<ComputedRef<QuizStatus>>,
     selectAnswer,
     nextQuestion,
     previousQuestion,

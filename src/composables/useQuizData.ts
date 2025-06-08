@@ -1,11 +1,11 @@
-import { ref, readonly } from 'vue'
+import { ref, readonly, type Ref } from 'vue'
 import { quizData } from '../quizData'
 import type { QuizQuestion } from '../types/quiz'
 
 interface UseQuizDataReturn {
-  questions: Readonly<typeof questions>
-  isLoading: Readonly<typeof isLoading>
-  error: Readonly<typeof error>
+  questions: Readonly<Ref<QuizQuestion[]>>
+  isLoading: Readonly<Ref<boolean>>
+  error: Readonly<Ref<string | null>>
   loadQuestions: () => Promise<void>
 }
 
@@ -33,9 +33,9 @@ export function useQuizData(): UseQuizDataReturn {
   }
 
   return {
-    questions: readonly(questions),
-    isLoading: readonly(isLoading),
-    error: readonly(error),
+    questions: readonly(questions) as Readonly<Ref<QuizQuestion[]>>,
+    isLoading: readonly(isLoading) as Readonly<Ref<boolean>>,
+    error: readonly(error) as Readonly<Ref<string | null>>,
     loadQuestions,
   }
 }

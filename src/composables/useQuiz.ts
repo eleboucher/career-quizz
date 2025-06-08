@@ -1,8 +1,8 @@
-import { computed, onMounted, nextTick } from 'vue'
+import { computed, onMounted, nextTick, type ComputedRef } from 'vue'
 import { useQuizData } from './useQuizData'
 import { useQuizState } from './useQuizState'
 import { useQuizResults } from './useQuizResults'
-import type { QuizQuestion } from '../types/quiz'
+import type { QuizQuestion, CareerResult } from '../types/quiz'
 
 interface UseQuizReturn {
   // Data
@@ -17,10 +17,10 @@ interface UseQuizReturn {
   status: ReturnType<typeof useQuizState>['status']
 
   // Computed
-  currentQuestion: typeof currentQuestion
-  hasAnsweredCurrent: typeof hasAnsweredCurrent
-  isLastQuestion: typeof isLastQuestion
-  result: typeof result
+  currentQuestion: ComputedRef<QuizQuestion | null>
+  hasAnsweredCurrent: ComputedRef<boolean>
+  isLastQuestion: ComputedRef<boolean>
+  result: ComputedRef<CareerResult>
 
   // Actions
   selectAnswer: (optionIndex: number) => void
@@ -54,7 +54,7 @@ export function useQuiz(): UseQuizReturn {
   })
 
   // Actions
-  const selectAnswer = async (optionIndex: number): void => {
+  const selectAnswer = async (optionIndex: number): Promise<void> => {
     const question = currentQuestion.value
     if (!question) return
 
