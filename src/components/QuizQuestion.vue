@@ -12,14 +12,13 @@
                transition-all duration-200 hover:bg-gray-50 hover:border-gray-300 
                active:bg-gray-100"
         :class="{
-          'ring-2 ring-blue-500 bg-blue-50 hover:bg-blue-50': selectedAnswer === index,
+          'ring-2 ring-blue-500 bg-blue-50 hover:bg-blue-50': selectedAnswers?.includes(index),
         }"
       >
         <input
-          type="radio"
-          :name="`question-${question.id}`"
+          type="checkbox"
           :value="index"
-          :checked="selectedAnswer === index"
+          :checked="selectedAnswers?.includes(index)"
           @change="$emit('select', index)"
           class="mr-3 text-blue-500 transition-all duration-150"
         />
@@ -35,7 +34,7 @@ import type { QuizQuestion as QuizQuestionType } from '../types/quiz'
 
 interface Props {
   question: QuizQuestionType
-  selectedAnswer?: number
+  selectedAnswers?: number[]
 }
 
 interface Emits {

@@ -12,231 +12,284 @@ export interface QuizQuestion {
 export const quizData: QuizQuestion[] = [
   {
     id: 1,
-    text: 'What sounds most fun to you?',
+    text: "When you're trying to solve a problem, which approaches feel most natural to you? (Select all that apply)",
     options: [
-      { label: 'Building interactive web apps using React or Vue', scores: { FE: 3 } },
-      { label: 'Writing code to manage data, users, and APIs', scores: { BE: 3 } },
-      { label: 'Making apps run smoothly on iOS and Android', scores: { MB: 3 } },
-      { label: 'Creating scripts or tools to automate work', scores: { OT: 3 } },
-      { label: 'Not sure yet', scores: {} },
+      {
+        label: 'Start by understanding who will be affected and how they currently handle this',
+        scores: { FE: 2, MB: 1, QA: 1 },
+      },
+      {
+        label: 'Break it down into smaller pieces and tackle each part systematically',
+        scores: { BE: 2, OT: 1, QA: 1 },
+      },
+      {
+        label: 'Look for existing solutions and adapt them to this specific context',
+        scores: { MB: 1, BE: 1, FE: 1 },
+      },
+      {
+        label: 'Consider what could go wrong and build in safeguards from the start',
+        scores: { OT: 2, BE: 1, QA: 2 },
+      },
+      { label: 'Try a quick prototype to see if the basic idea works', scores: { FE: 1, MB: 1 } },
+      {
+        label: 'Research the underlying principles to understand why current approaches exist',
+        scores: { BE: 1, OT: 1 },
+      },
+      {
+        label: 'Think about all the ways this could be misused or break in unexpected situations',
+        scores: { QA: 2, OT: 1 },
+      },
     ],
   },
   {
     id: 2,
-    text: "You're given a task to help a team. What would you prefer doing?",
+    text: 'In a group project, what role do you naturally gravitate toward? (Select all that feel right)',
     options: [
-      { label: 'Handle the UI and user interactions', scores: { FE: 3 } },
-      { label: 'Design the system behind the scenes', scores: { BE: 3 } },
-      { label: 'Get the app to run on phones', scores: { MB: 3 } },
-      { label: 'Write scripts to help automate deployment', scores: { OT: 3 } },
-      { label: 'Not sure', scores: {} },
+      {
+        label: 'Making sure the final result is intuitive and easy for people to use',
+        scores: { FE: 2, MB: 1, QA: 1 },
+      },
+      {
+        label: 'Figuring out the underlying structure and how all the pieces connect',
+        scores: { BE: 2, OT: 1 },
+      },
+      {
+        label: 'Ensuring it works well in different situations and environments',
+        scores: { MB: 2, OT: 1, QA: 1 },
+      },
+      {
+        label: 'Setting up processes so the team can work efficiently together',
+        scores: { OT: 2 },
+      },
+      { label: 'Iterating on ideas based on feedback from others', scores: { FE: 1, MB: 1 } },
+      {
+        label: 'Researching and sharing knowledge to help everyone make better decisions',
+        scores: { BE: 1, OT: 1 },
+      },
+      {
+        label: 'Double-checking that everything meets the original requirements',
+        scores: { QA: 2, OT: 1 },
+      },
     ],
   },
   {
     id: 3,
-    text: 'When something breaks, what kind of problem would you rather investigate?',
+    text: 'When learning something new, what keeps you most engaged? (Select all that resonate)',
     options: [
-      { label: "The interface isn't responding correctly to user clicks", scores: { FE: 2 } },
-      { label: "The data isn't being saved or retrieved properly", scores: { BE: 2 } },
-      { label: 'The app works on iPhone but crashes on Android', scores: { MB: 2 } },
-      { label: 'The automated build process is failing', scores: { OT: 2 } },
-      { label: "I'm not sure yet", scores: {} },
+      {
+        label: 'Seeing immediate results and being able to show others what I built',
+        scores: { FE: 2 },
+      },
+      { label: 'Understanding the logic behind how and why something works', scores: { BE: 2 } },
+      {
+        label: 'Figuring out how to make it work in real-world conditions',
+        scores: { MB: 2, OT: 1 },
+      },
+      { label: 'Learning how to make processes more reliable and repeatable', scores: { OT: 2 } },
+      {
+        label: 'Getting feedback from others and improving based on their input',
+        scores: { FE: 1, MB: 1 },
+      },
+      { label: 'Going deep into the technical details and edge cases', scores: { BE: 1, OT: 1 } },
     ],
   },
   {
     id: 4,
-    text: 'Which tutorial would you rather watch?',
+    text: 'Which types of challenges energize you most? (Select all that sound interesting)',
     options: [
-      { label: 'How to build a web app with Vue or React', scores: { FE: 2 } },
-      { label: 'How to design and build an API with a database', scores: { BE: 2 } },
-      { label: 'How to build your first mobile app', scores: { MB: 2 } },
-      { label: 'How to automate tasks with Python or set up CI/CD', scores: { OT: 2 } },
-      { label: 'Not sure', scores: {} },
+      {
+        label: 'Making something complex feel simple and obvious to use',
+        scores: { FE: 2, MB: 1 },
+      },
+      {
+        label: 'Optimizing something to handle much larger scale or complexity',
+        scores: { BE: 2, OT: 1 },
+      },
+      {
+        label: 'Getting something to work consistently across different constraints',
+        scores: { MB: 2, BE: 1 },
+      },
+      { label: 'Eliminating manual work through smart automation', scores: { OT: 2 } },
+      {
+        label: 'Balancing multiple competing requirements to find the best solution',
+        scores: { BE: 1, FE: 1, MB: 1 },
+      },
+      {
+        label: "Taking something that's unreliable and making it rock-solid",
+        scores: { OT: 1, BE: 1 },
+      },
     ],
   },
   {
     id: 5,
-    text: 'What kind of project would you enjoy building?',
+    text: 'When working under pressure, how do you prefer to contribute? (Select all that feel natural)',
     options: [
-      { label: 'An interactive portfolio website with animations', scores: { FE: 3 } },
-      { label: 'A task manager with user accounts and data persistence', scores: { BE: 3 } },
-      { label: 'A mobile app for tracking habits', scores: { MB: 3 } },
-      { label: 'A script to organize files and automate workflows', scores: { OT: 3 } },
-      { label: 'None of these excite me', scores: {} },
+      {
+        label: 'Focus on keeping things working for the people who depend on them',
+        scores: { FE: 2, MB: 1 },
+      },
+      {
+        label: "Dig into the details to understand what's really causing the problem",
+        scores: { BE: 2 },
+      },
+      {
+        label: 'Test different scenarios to understand the scope of the issue',
+        scores: { MB: 1, BE: 1, OT: 1 },
+      },
+      {
+        label: 'Coordinate the response and make sure nothing important gets missed',
+        scores: { OT: 2 },
+      },
+      {
+        label: 'Find the quickest safe solution and then investigate properly later',
+        scores: { FE: 1, OT: 1 },
+      },
+      {
+        label: 'Document what we learn so we can prevent similar issues',
+        scores: { OT: 1, BE: 1 },
+      },
     ],
   },
   {
     id: 6,
-    text: 'When learning something new, what gives you the most satisfaction?',
+    text: 'What type of feedback makes you feel most accomplished? (Select all that would motivate you)',
     options: [
-      { label: 'Seeing immediate visual results of my changes', scores: { FE: 2 } },
-      { label: 'Understanding how data flows through a system', scores: { BE: 2 } },
-      { label: 'Getting something to work across different devices', scores: { MB: 2 } },
-      { label: 'Building tools that make other tasks easier', scores: { OT: 2 } },
-      { label: "I don't know yet", scores: {} },
+      { label: '"This is so much easier to use now - thank you!"', scores: { FE: 2, MB: 1 } },
+      {
+        label: '"This handles our complex requirements perfectly and runs fast"',
+        scores: { BE: 2 },
+      },
+      {
+        label: '"Finally, something that works the same way everywhere I try it"',
+        scores: { MB: 2, OT: 1 },
+      },
+      { label: '"This saved our team hours of work every week"', scores: { OT: 2 } },
+      {
+        label: '"You made this feel effortless even though I know it\'s complicated"',
+        scores: { FE: 1, MB: 1 },
+      },
+      { label: '"This is robust - I can rely on it completely"', scores: { BE: 1, OT: 1 } },
+      {
+        label: '"You caught issues we never would have thought of - this prevented major problems"',
+        scores: { QA: 2 },
+      },
     ],
   },
   {
     id: 7,
-    text: 'Which kind of job sounds most appealing?',
+    text: 'In your ideal work environment, how would you spend your time? (Select all that appeal to you)',
     options: [
-      { label: 'Working closely with designers to improve user experience', scores: { FE: 2 } },
-      { label: 'Architecting systems that handle thousands of users', scores: { BE: 2 } },
-      { label: 'Publishing an app to the Play Store or App Store', scores: { MB: 2 } },
-      { label: 'Improving build pipelines and developer productivity', scores: { OT: 2 } },
-      { label: "I'm not sure", scores: {} },
+      { label: 'Collaborating with creative people to bring ideas to life', scores: { FE: 2 } },
+      {
+        label: 'Having long stretches of focused time to work through complex problems',
+        scores: { BE: 2 },
+      },
+      {
+        label: 'Testing and refining solutions across different real-world scenarios',
+        scores: { MB: 2 },
+      },
+      { label: 'Working across teams to improve how everyone gets things done', scores: { OT: 2 } },
+      {
+        label: 'Getting quick feedback cycles to iterate and improve continuously',
+        scores: { FE: 1, MB: 1 },
+      },
+      { label: 'Building foundational work that others can depend on', scores: { BE: 1, OT: 1 } },
     ],
   },
   {
     id: 8,
-    text: 'Which type of thinking appeals to you most?',
+    text: 'When you imagine the impact you want to have, what resonates most? (Select all that inspire you)',
     options: [
-      { label: 'How users will interact with and navigate through features', scores: { FE: 2 } },
-      { label: 'How to structure data and optimize performance', scores: { BE: 2 } },
-      { label: 'How to make features work consistently across platforms', scores: { MB: 2 } },
-      { label: 'How to streamline and automate repetitive processes', scores: { OT: 2 } },
-      { label: "I don't know yet", scores: {} },
+      {
+        label: "Creating experiences that make people's daily tasks more enjoyable",
+        scores: { FE: 2, MB: 1 },
+      },
+      {
+        label: 'Building systems that reliably handle important business processes',
+        scores: { BE: 2 },
+      },
+      {
+        label: 'Making powerful tools accessible to people in different situations',
+        scores: { MB: 2 },
+      },
+      {
+        label: 'Enabling teams to focus on creative work instead of repetitive tasks',
+        scores: { OT: 2 },
+      },
+      {
+        label: 'Solving problems that directly improve how people get things done',
+        scores: { FE: 1, BE: 1, MB: 1 },
+      },
+      {
+        label: "Building things that just work, so people don't have to think about them",
+        scores: { BE: 1, OT: 1 },
+      },
     ],
   },
   {
     id: 9,
-    text: 'What interests you most about tech?',
+    text: 'Which aspects of quality are you most naturally drawn to care about? (Select all that matter to you)',
     options: [
-      { label: 'Making digital tools intuitive and delightful to use', scores: { FE: 2 } },
-      { label: 'Building robust systems that handle complex business logic', scores: { BE: 2 } },
-      { label: 'Making technology accessible on mobile devices', scores: { MB: 2 } },
-      { label: 'Creating tools and processes that help teams work better', scores: { OT: 2 } },
-      { label: 'Still exploring', scores: {} },
+      {
+        label: "Making sure it's intuitive and doesn't frustrate people",
+        scores: { FE: 2, MB: 1, QA: 1 },
+      },
+      {
+        label: 'Ensuring it handles edge cases and unexpected inputs gracefully',
+        scores: { BE: 2, OT: 1, QA: 1 },
+      },
+      {
+        label: 'Verifying it performs well under different real-world conditions',
+        scores: { MB: 2, BE: 1, QA: 1 },
+      },
+      {
+        label: 'Building in monitoring and recovery so problems get caught early',
+        scores: { OT: 2 },
+      },
+      {
+        label: 'Getting input from actual users to make sure it meets their needs',
+        scores: { FE: 1, MB: 1, QA: 1 },
+      },
+      {
+        label: "Making the code maintainable so future changes don't break things",
+        scores: { BE: 1, OT: 1 },
+      },
+      {
+        label: 'Thoroughly testing every possible scenario before anyone else uses it',
+        scores: { QA: 2 },
+      },
     ],
   },
   {
     id: 10,
-    text: 'Which part of the stack would you like to learn first?',
-    options: [
-      { label: 'UI frameworks like Vue or React', scores: { FE: 3 } },
-      { label: 'Databases, APIs, and server logic', scores: { BE: 3 } },
-      { label: 'Mobile app frameworks and platform-specific features', scores: { MB: 3 } },
-      { label: 'Dev tools, version control, and deployment systems', scores: { OT: 3 } },
-      { label: 'Not sure yet', scores: {} },
-    ],
-  },
-  {
-    id: 11,
-    text: 'Which skill would you rather practice?',
-    options: [
-      { label: 'Creating responsive layouts and interactive components', scores: { FE: 2 } },
-      { label: 'Designing database schemas and writing efficient queries', scores: { BE: 2 } },
-      {
-        label: 'Testing apps on real devices and handling platform differences',
-        scores: { MB: 2 },
-      },
-      { label: 'Writing scripts to automate testing and deployment', scores: { OT: 2 } },
-      { label: "I don't know", scores: {} },
-    ],
-  },
-  {
-    id: 12,
-    text: 'Which of these is least intimidating?',
-    options: [
-      { label: 'Creating a dynamic form that validates user input', scores: { FE: 2 } },
-      { label: 'Setting up a database and writing API endpoints', scores: { BE: 2 } },
-      { label: 'Building a simple app layout for phones and tablets', scores: { MB: 2 } },
-      { label: 'Writing a script that automatically backs up files', scores: { OT: 2 } },
-      { label: 'They all sound challenging', scores: {} },
-    ],
-  },
-  {
-    id: 13,
-    text: 'What aspect of app development is most interesting to you?',
-    options: [
-      { label: 'How buttons, animations, and interactions feel to users', scores: { FE: 2 } },
-      { label: 'How user data is securely stored and efficiently retrieved', scores: { BE: 2 } },
-      { label: 'How the app adapts to different screen sizes and orientations', scores: { MB: 2 } },
-      { label: 'How the app gets tested, built, and deployed reliably', scores: { OT: 2 } },
-      { label: 'Not sure', scores: {} },
-    ],
-  },
-  {
-    id: 14,
-    text: 'What kind of teammate do you want to be?',
-    options: [
-      { label: 'The one who makes the product beautiful and easy to use', scores: { FE: 2 } },
-      { label: 'The one who ensures the system is scalable and reliable', scores: { BE: 2 } },
-      { label: 'The one who makes sure mobile users have a great experience', scores: { MB: 2 } },
-      { label: 'The one who improves team productivity and workflows', scores: { OT: 2 } },
-      { label: 'Any role sounds fine', scores: {} },
-    ],
-  },
-  {
-    id: 15,
-    text: 'Which problem-solving approach appeals to you?',
+    text: 'Looking ahead 2-3 years, which growth areas excite you most? (Select all that sound appealing)',
     options: [
       {
-        label: "Debugging why a user interface element isn't behaving correctly",
-        scores: { FE: 2 },
+        label: 'Becoming great at translating complex functionality into simple experiences',
+        scores: { FE: 3, MB: 1 },
       },
-      { label: 'Investigating why data processing is slow or incorrect', scores: { BE: 2 } },
-      { label: 'Figuring out why an app works differently on various devices', scores: { MB: 2 } },
-      { label: 'Troubleshooting why an automated process failed', scores: { OT: 2 } },
-      { label: 'None of them appeal to me yet', scores: {} },
-    ],
-  },
-  {
-    id: 16,
-    text: 'How do you feel about design?',
-    options: [
+      { label: 'Mastering the design of efficient, scalable systems', scores: { BE: 3 } },
       {
-        label: "I enjoy bringing designs to life, but don't want to create them",
-        scores: { FE: 2 },
+        label: 'Specializing in creating solutions that work across diverse environments',
+        scores: { MB: 3 },
       },
-      { label: "Design isn't my focus — I prefer logic and data problems", scores: { BE: 2 } },
-      { label: 'I want to ensure designs work well across different devices', scores: { MB: 2 } },
-      { label: "Design doesn't interest me — I like systems and automation", scores: { OT: 2 } },
-      { label: 'Still figuring that out', scores: {} },
-    ],
-  },
-  {
-    id: 17,
-    text: 'What excites you more: building something new or improving something existing?',
-    options: [
-      { label: 'Creating new user interfaces and interactions from scratch', scores: { FE: 2 } },
-      { label: 'Optimizing existing systems to handle more users or data', scores: { BE: 2 } },
-      { label: 'Adapting existing apps to work better on mobile platforms', scores: { MB: 2 } },
-      { label: 'Improving existing tools and processes to save time', scores: { OT: 2 } },
-      { label: 'Both sound equally interesting', scores: {} },
-    ],
-  },
-  {
-    id: 18,
-    text: 'What excites you about software development?',
-    options: [
-      { label: 'Making complex functionality feel simple and intuitive', scores: { FE: 2 } },
-      { label: 'Building systems that reliably handle business requirements', scores: { BE: 2 } },
-      { label: 'Creating experiences that work seamlessly across devices', scores: { MB: 2 } },
-      { label: 'Building tools that make development faster and more reliable', scores: { OT: 2 } },
-      { label: "I'm not sure yet", scores: {} },
-    ],
-  },
-  {
-    id: 19,
-    text: 'What would you most enjoy building for a hackathon?',
-    options: [
-      { label: 'An interactive web tool with a polished user interface', scores: { FE: 3 } },
-      { label: 'A backend service that processes and analyzes data', scores: { BE: 3 } },
-      { label: 'A mobile app prototype that solves a real problem', scores: { MB: 3 } },
-      { label: 'A developer tool or automation that helps other teams', scores: { OT: 3 } },
-      { label: 'Not sure yet', scores: {} },
-    ],
-  },
-  {
-    id: 20,
-    text: 'How do you want your day-to-day work to feel?',
-    options: [
-      { label: 'Creative and user-focused, with visible impact on experience', scores: { FE: 3 } },
-      { label: 'Analytical and systematic, building robust foundations', scores: { BE: 3 } },
-      { label: 'Versatile and platform-aware, ensuring broad accessibility', scores: { MB: 3 } },
-      { label: 'Efficiency-focused, optimizing processes behind the scenes', scores: { OT: 3 } },
-      { label: 'Still exploring what appeals to me', scores: {} },
+      { label: 'Leading efforts to improve how development teams operate', scores: { OT: 3 } },
+      {
+        label: 'Building end-to-end solutions from concept to deployment',
+        scores: { BE: 2, FE: 2 },
+      },
+      {
+        label: 'Developing deep expertise in solving complex technical challenges',
+        scores: { BE: 1, OT: 1 },
+      },
+      {
+        label: 'Becoming an expert at ensuring software quality and preventing issues',
+        scores: { QA: 3 },
+      },
+      {
+        label: 'Mentoring others and helping build great development cultures',
+        scores: { FE: 1, BE: 1, MB: 1, OT: 1, QA: 1 },
+      },
     ],
   },
 ]

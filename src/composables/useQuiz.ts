@@ -1,4 +1,4 @@
-import { computed, onMounted, nextTick, type ComputedRef } from 'vue'
+import { computed, onMounted, type ComputedRef } from 'vue'
 import { useQuizData } from './useQuizData'
 import { useQuizState } from './useQuizState'
 import { useQuizResults } from './useQuizResults'
@@ -62,8 +62,6 @@ export function useQuiz(): UseQuizReturn {
     if (!option) return
 
     quizState.selectAnswer(quizState.currentQuestionIndex.value, optionIndex, option.scores)
-    await nextTick()
-    nextQuestion()
   }
 
   const nextQuestion = (): void => {

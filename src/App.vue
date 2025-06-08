@@ -67,7 +67,7 @@ const handleRetry = () => {
                   <QuizQuestion
                     v-if="currentQuestion"
                     :question="currentQuestion"
-                    :selected-answer="answers[currentQuestionIndex]"
+                    :selected-answers="answers[currentQuestionIndex]"
                     @select="selectAnswer"
                   />
                 </div>

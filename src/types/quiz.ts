@@ -1,4 +1,4 @@
-export type CareerCategory = 'FE' | 'BE' | 'MB' | 'OT'
+export type CareerCategory = 'FE' | 'BE' | 'MB' | 'OT' | 'QA'
 
 export type Scores = Record<CareerCategory, number>
 
@@ -21,7 +21,7 @@ export interface CareerResult {
 
 export interface QuizState {
   currentQuestionIndex: number
-  answers: number[]
+  answers: number[][]
   scores: Scores
   isCompleted: boolean
 }
@@ -51,6 +51,12 @@ export const CAREER_PATHS: Record<CareerCategory, CareerResult> = {
     description: 'You thrive on automation, deployment, and keeping systems running smoothly.',
     category: 'OT',
   },
+  QA: {
+    name: 'Quality Assurance Engineer',
+    description:
+      'You focus on testing and ensuring software quality through thorough testing and analysis.',
+    category: 'QA',
+  },
 }
 
 export const CAREER_DISPLAY_NAMES: Record<CareerCategory, string> = {
@@ -58,4 +64,5 @@ export const CAREER_DISPLAY_NAMES: Record<CareerCategory, string> = {
   BE: 'Backend',
   MB: 'Mobile',
   OT: 'DevOps',
+  QA: 'Quality Assurance',
 }
