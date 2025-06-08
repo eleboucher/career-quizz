@@ -3,7 +3,7 @@ import type { QuizState, QuizStatus, Scores, CareerCategory } from '../types/qui
 
 interface UseQuizStateReturn {
   currentQuestionIndex: Readonly<Ref<number>>
-  answers: Readonly<Ref<number[][]>>
+  answers: Readonly<Ref<Map<number, Set<number>>>>
   scores: Readonly<Ref<Scores>>
   status: Readonly<ComputedRef<QuizStatus>>
   selectAnswer: (questionIndex: number, optionIndex: number, optionScores: Partial<Scores>) => void
@@ -17,19 +17,19 @@ interface UseQuizStateReturn {
 
 const createInitialState = (): QuizState => ({
   currentQuestionIndex: 0,
-  answers: [],
+  answers: new Map(),
   scores: { FE: 0, BE: 0, MB: 0, OT: 0, QA: 0 },
   isCompleted: false,
 })
 
 const currentQuestionIndex = ref(0)
-const answers = ref<number[][]>([])
+const answers = ref<Map<number, Set<number>>>(new Map())
 const scores = ref<Scores>({ FE: 0, BE: 0, MB: 0, OT: 0, QA: 0 })
 const isCompleted = ref(false)
 
 const status = computed<QuizStatus>(() => {
   if (isCompleted.value) return 'completed'
-  if (currentQuestionIndex.value > 0 || answers.value.length > 0) return 'in_progress'
+  if (currentQuestionIndex.value > 0 || answers.value.size > 0) return 'in_progress'
   return 'idle'
 })
 
@@ -39,17 +39,17 @@ export function useQuizState(): UseQuizStateReturn {
     optionIndex: number,
     optionScores: Partial<Scores>,
   ): void => {
-    // Initialize answers array for this question if it doesn't exist
-    if (!answers.value[questionIndex]) {
-      answers.value[questionIndex] = []
+    // Initialize answers set for this question if it doesn't exist
+    if (!answers.value.has(questionIndex)) {
+      answers.value.set(questionIndex, new Set())
     }
 
-    const questionAnswers = answers.value[questionIndex]
-    const isSelected = questionAnswers.includes(optionIndex)
+    const questionAnswers = answers.value.get(questionIndex)!
+    const isSelected = questionAnswers.has(optionIndex)
 
     if (isSelected) {
       // Remove the answer and subtract scores
-      answers.value[questionIndex] = questionAnswers.filter(idx => idx !== optionIndex)
+      questionAnswers.delete(optionIndex)
       Object.entries(optionScores).forEach(([category, score]) => {
         if (score && category in scores.value) {
           scores.value[category as CareerCategory] -= score
@@ -57,7 +57,7 @@ export function useQuizState(): UseQuizStateReturn {
       })
     } else {
       // Add the answer and add scores
-      answers.value[questionIndex].push(optionIndex)
+      questionAnswers.add(optionIndex)
       Object.entries(optionScores).forEach(([category, score]) => {
         if (score && category in scores.value) {
           scores.value[category as CareerCategory] += score
@@ -79,13 +79,14 @@ export function useQuizState(): UseQuizStateReturn {
   const resetQuiz = (): void => {
     const initialState = createInitialState()
     currentQuestionIndex.value = initialState.currentQuestionIndex
-    answers.value = initialState.answers
+    answers.value.clear()
     scores.value = initialState.scores
     isCompleted.value = initialState.isCompleted
   }
 
   const hasAnsweredCurrent = (questionIndex: number): boolean => {
-    return answers.value[questionIndex] !== undefined && answers.value[questionIndex].length > 0
+    const questionAnswers = answers.value.get(questionIndex)
+    return questionAnswers !== undefined && questionAnswers.size > 0
   }
 
   const isLastQuestion = (totalQuestions: number): boolean => {
@@ -98,7 +99,7 @@ export function useQuizState(): UseQuizStateReturn {
 
   return {
     currentQuestionIndex: readonly(currentQuestionIndex) as Readonly<Ref<number>>,
-    answers: readonly(answers) as Readonly<Ref<number[][]>>,
+    answers: readonly(answers) as Readonly<Ref<Map<number, Set<number>>>>,
     scores: readonly(scores) as Readonly<Ref<Scores>>,
     status: status as Readonly<ComputedRef<QuizStatus>>,
     selectAnswer,

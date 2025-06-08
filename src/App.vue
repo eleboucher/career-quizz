@@ -51,10 +51,7 @@ const handleRetry = () => {
         <!-- Quiz Content -->
         <template v-else-if="questions.length > 0">
           <!-- Quiz Questions -->
-          <div
-            v-if="status !== 'completed'"
-            class="bg-white rounded-lg shadow-lg p-6 animate-fadeIn transform transition-all duration-500"
-          >
+          <div v-if="status !== 'completed'" class="bg-white rounded-lg shadow-lg p-6">
             <div class="mb-6">
               <QuizProgress :current="currentQuestionIndex + 1" :total="questions.length" />
 
@@ -67,7 +64,11 @@ const handleRetry = () => {
                   <QuizQuestion
                     v-if="currentQuestion"
                     :question="currentQuestion"
-                    :selected-answers="answers[currentQuestionIndex]"
+                    :selected-answers="
+                      answers.get(currentQuestionIndex)
+                        ? Array.from(answers.get(currentQuestionIndex)!)
+                        : []
+                    "
                     @select="selectAnswer"
                   />
                 </div>

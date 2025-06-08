@@ -21,7 +21,7 @@ export interface CareerResult {
 
 export interface QuizState {
   currentQuestionIndex: number
-  answers: number[][]
+  answers: Map<number, Set<number>>
   scores: Scores
   isCompleted: boolean
 }
