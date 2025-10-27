@@ -24,7 +24,7 @@ The questions are beginner-friendly and designed to help newcomers to tech under
 
 ## Live Demo
 
-Visit the live quiz at: [https://[username].github.io/career-finder/](https://[username].github.io/career-finder/)
+Visit the live quiz at: [https://eleboucher.github.io/career-finder/](https://eleboucher.github.io/career-finder/)
 
 ## Technology Stack
 
